@@ -11,7 +11,7 @@
     "http"
   ],
   "paths": {
-    "/suppliers/findAll": {
+    "/suppliers/findAll/json": {
       "get": {
         "description": "",
         "responses": {
