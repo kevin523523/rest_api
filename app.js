@@ -13,7 +13,7 @@ const swaggerUi = require('swagger-ui-express')
 /* REFERENCIA AL ARCHIVO GENERADO */
 const swaggerFile = require('./swagger_output.json')
 
-var app = express();
+const app = express();
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
