@@ -11,6 +11,8 @@ const swaggerFile = require('./swagger_output.json')
 const dotenv = require('dotenv');
 /* CARGA DE DATOS DE CONFIGURACION EN MEMORIA */
 dotenv.config();
+/* Referencia al middleware */
+var authJWT = require('./middleware/auth');
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
@@ -31,6 +33,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/suppliers', suppliersRouter);
+/* Agregue el middleware para la ruta '/suppliers' */
+app.use('/suppliers', authJWT, suppliersRouter);
 /* CONFIGURACIÓN DE LA RUTA A LA DOCUMENTACIÓN */
 app.use('/documentation', swaggerUi.serve, swaggerUi.setup(swaggerFile))
 // catch 404 and forward to error handler
