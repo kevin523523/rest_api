@@ -3,17 +3,20 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+/* REFERENCIA AL MÓDULO */
+const swaggerUi = require('swagger-ui-express')
+/* REFERENCIA AL ARCHIVO GENERADO */
+const swaggerFile = require('./swagger_output.json')
+/* MÓDULO dotenv */
+const dotenv = require('dotenv');
+/* CARGA DE DATOS DE CONFIGURACION EN MEMORIA */
+dotenv.config();
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var suppliersRouter = require('./routes/suppliers');
-/* REFERENCIA AL MÓDULO */
-const swaggerUi = require('swagger-ui-express')
 
-/* REFERENCIA AL ARCHIVO GENERADO */
-const swaggerFile = require('./swagger_output.json')
-
-const app = express();
+var app = express();
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
