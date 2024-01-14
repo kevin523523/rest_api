@@ -7,6 +7,11 @@ var logger = require('morgan');
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var suppliersRouter = require('./routes/suppliers');
+/* REFERENCIA AL MÓDULO */
+const swaggerUi = require('swagger-ui-express')
+
+/* REFERENCIA AL ARCHIVO GENERADO */
+const swaggerFile = require('./swagger_output.json')
 var app = express();
 
 // view engine setup
@@ -18,9 +23,11 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
-
+/* CONFIGURACIÓN DE LA RUTA A LA DOCUMENTACIÓN */
+app.use('/documentation', swaggerUi.serve, swaggerUi.setup(swaggerFile))
 app.use('/users', usersRouter);
 app.use('/suppliers', suppliersRouter);
+
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   next(createError(404));

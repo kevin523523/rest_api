@@ -4,7 +4,7 @@ var router = express.Router();
 const { Sequelize, Op } = require('sequelize');
 const Suppliers = require('../models').suppliers;
 
-router.get('/findAll/json', function (req, res, next) {
+router.get('/findAll', function (req, res, next) {
     Suppliers.findAll({
     })
         .then(data => {
@@ -47,7 +47,7 @@ router.post('/save', function (req, res, next) {
 });
 router.put('/update', function (req, res, next) {
 
-    let { SupplierName, ContactName, Address, City, PostalCode, Country, Phone } = req.body;
+    let {id, SupplierName, ContactName, Address, City, PostalCode, Country, Phone } = req.body;
 
     Suppliers.update({
         SupplierName: SupplierName,
@@ -72,7 +72,7 @@ router.delete('/delete/:id', function (req, res, next) {
 
     let id = parseInt(req.params.id);
 
-    Users.destroy({
+    Suppliers.destroy({
         where: {
             SupplierID: id
         }
