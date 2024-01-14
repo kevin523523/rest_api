@@ -6,6 +6,16 @@
     "description": ""
   },
   "host": "localhost:3000",
+  
+"securityDefinitions": {
+  "ApiKeyAuth": {
+    "name": "jwt_token",
+    "in": "header",
+    "type": "apiKey",
+    "description": "JWT Token header"
+  }
+},
+"security": [ { "ApiKeyAuth": [] } ],
   "basePath": "/",
   "schemes": [
     "http"
