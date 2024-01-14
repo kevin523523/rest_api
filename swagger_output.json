@@ -5,7 +5,7 @@
     "title": "REST API",
     "description": ""
   },
-  "host": "localhost:3000",
+  "host": "restapi-production-295b.up.railway.app",
   
 "securityDefinitions": {
   "ApiKeyAuth": {
@@ -18,7 +18,7 @@
 "security": [ { "ApiKeyAuth": [] } ],
   "basePath": "/",
   "schemes": [
-    "http"
+    "https"
   ],
   "paths": {
     "/suppliers/findAll": {
